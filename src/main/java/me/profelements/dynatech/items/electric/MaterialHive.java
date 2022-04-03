@@ -74,8 +74,7 @@ public class MaterialHive extends AMachine implements RecipeDisplayItem, Radioac
                             seconds = 900;
                        }
                        if (bee2.getId().equals(DynaTechItems.ADVANCED_ROBOTIC_BEE.getItemId())) {
-                           // previous was 300
-                           seconds = 1;
+                           seconds = 300;
                        }
                     }
                 }
