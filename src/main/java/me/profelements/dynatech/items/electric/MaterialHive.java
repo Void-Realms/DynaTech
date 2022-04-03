@@ -74,7 +74,8 @@ public class MaterialHive extends AMachine implements RecipeDisplayItem, Radioac
                             seconds = 900;
                        }
                        if (bee2.getId().equals(DynaTechItems.ADVANCED_ROBOTIC_BEE.getItemId())) {
-                           seconds = 300;
+                           // previous was 300
+                           seconds = 1;
                        }
                     }
                 }
@@ -89,7 +90,7 @@ public class MaterialHive extends AMachine implements RecipeDisplayItem, Radioac
             SlimefunItem sfItem = SlimefunItem.getById(slimefunItem);
             if (sfItem != null) {
                 ItemStack item = sfItem.getItem().clone();
-                item.setAmount(64);
+                item.setAmount(1);
                 registerRecipe(new MachineRecipe(1800, new ItemStack[] { item }, new ItemStack[] { SlimefunItem.getById(slimefunItem).getItem() }));
         
             }
