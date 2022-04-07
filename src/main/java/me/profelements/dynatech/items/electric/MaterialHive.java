@@ -95,7 +95,7 @@ public class MaterialHive extends AMachine implements RecipeDisplayItem, Radioac
             }
         }
         for (String material : vanillaItemsAccepted.getValue()) {
-            ItemStack item = new ItemStack(Material.matchMaterial(material), 64);
+            ItemStack item = new ItemStack(Material.matchMaterial(material), 1);
             registerRecipe(new MachineRecipe(1800, new ItemStack[] { item }, new ItemStack[] { new ItemStack(Material.matchMaterial(material)) }));
         }
     }
