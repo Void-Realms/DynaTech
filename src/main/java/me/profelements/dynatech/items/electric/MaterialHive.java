@@ -48,7 +48,7 @@ public class MaterialHive extends AMachine implements RecipeDisplayItem, Radioac
         for (MachineRecipe recipe: recipes) {
             ItemStack input = recipe.getInput()[0];
 
-            if (SlimefunUtils.isItemSimilar(key, input, true) && key.getAmount() == 64) {
+            if (SlimefunUtils.isItemSimilar(key, input, true) && key.getAmount() >= 1) {
 
                 int seconds = 1800;
                 ItemStack b1 = inv.getItemInSlot(getInputSlots()[0]);
