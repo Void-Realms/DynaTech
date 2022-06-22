@@ -24,7 +24,7 @@ import javax.annotation.Nonnull;
 
 public class Orechid extends AMachine implements RecipeDisplayItem {
 
-    private static final Map<Material, RandomizedSet<ItemStack>> oreMap = new EnumMap<>(Material.class);
+    private static final Map<Material, RandomizedSet<ItemStack>> ORE_MAP = new EnumMap<>(Material.class);
     //private static final List<Material> END_ORES = new ArrayList<>();
 
     public Orechid(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
@@ -46,8 +46,10 @@ public class Orechid extends AMachine implements RecipeDisplayItem {
                 
                 Block relBlock = b.getRelative(relative);
     
-                if (oreMap.containsKey(relBlock.getType())) {
-                    ItemStack item = oreMap.get(relBlock.getType()).getRandom();
+                RandomizedSet<ItemStack> set = ORE_MAP.get(relBlock.getType());
+                if (set != null) {
+                    ItemStack item = set.getRandom();
+
                     SlimefunItem sfi = SlimefunItem.getByItem(item);
 
                     DynaTech.runSync(() -> {
@@ -64,14 +66,14 @@ public class Orechid extends AMachine implements RecipeDisplayItem {
     }
 
     public static void registerOre(@Nonnull Material from, @Nonnull Material result, float weight) {
-        oreMap.computeIfAbsent(from, k -> new RandomizedSet<>()).add(new ItemStack(result), weight);
+        ORE_MAP.computeIfAbsent(from, k -> new RandomizedSet<>()).add(new ItemStack(result), weight);
     }
 
     /**
      * For Slimefun items
      */
     public static void registerOre(@Nonnull Material from, @Nonnull SlimefunItemStack result, float weight) {
-        oreMap.computeIfAbsent(from, k -> new RandomizedSet<>()).add(result, weight);
+        ORE_MAP.computeIfAbsent(from, k -> new RandomizedSet<>()).add(result, weight);
     }
 
     private static void registerDefaultOres() {
@@ -96,8 +98,8 @@ public class Orechid extends AMachine implements RecipeDisplayItem {
     public List<ItemStack> getDisplayRecipes() {
         List<ItemStack> displayList = new ArrayList<>();
 
-        for (Material m : oreMap.keySet()) {
-            for (ItemStack item : oreMap.get(m)) {
+        for (Material m : ORE_MAP.keySet()) {
+            for (ItemStack item : ORE_MAP.get(m)) {
                 displayList.add(new ItemStack(m));
                 displayList.add(item);
             }
