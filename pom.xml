@@ -4,8 +4,8 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>me.profelements</groupId>
-    <artifactId>DynaTech</artifactId>
-    <version>1.0.0</version>
+    <artifactId>DynaTech-Void</artifactId>
+    <version>MODIFIED</version>
 
     <properties>
       <maven.compiler.source>16</maven.compiler.source>
